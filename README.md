@@ -1,0 +1,2 @@
+# Voxora
+a simple AI FOR CONVERSATION AND CALLS
