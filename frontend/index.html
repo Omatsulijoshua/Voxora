@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08090c" />
+    <meta name="description" content="Launch a natural AI voice conversation powered by ElevenLabs and Twilio." />
+    <title>Voxora — AI Voice, Made Human</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <nav>
+      <a class="brand" href="/" aria-label="Voxora home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        Voxora
+      </a>
+      <span class="status"><i></i> Voice agent online</span>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span>✦</span> AI that sounds genuinely human</div>
+        <h1>One call away from<br><em>a real conversation.</em></h1>
+        <p class="lede">Experience an intelligent voice agent that listens, understands, and responds naturally—in real time.</p>
+
+        <div class="call-card">
+          <div class="orb-wrap">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="voice-orb">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="call-copy">
+            <span class="label">Ready when you are</span>
+            <h2>Talk to your AI agent</h2>
+            <p>We’ll call your verified phone number. Pick up and start speaking.</p>
+          </div>
+          <button id="callButton" type="button">
+            <span class="phone">↗</span>
+            <span class="button-copy"><b>Call me now</b><small>Usually takes 5–10 seconds</small></span>
+          </button>
+        </div>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="features" aria-label="Voice agent features">
+        <article><span>01</span><h3>Natural voice</h3><p>Expressive speech with human-like pacing and emotion.</p></article>
+        <article><span>02</span><h3>Real-time response</h3><p>Fluid, low-latency conversation without awkward pauses.</p></article>
+        <article><span>03</span><h3>Built to understand</h3><p>Context-aware dialogue that follows where you lead.</p></article>
+      </section>
+    </main>
+
+    <footer><span>Powered by ElevenLabs × Twilio</span><span>Private. Secure. Effortless.</span></footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
