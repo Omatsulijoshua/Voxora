@@ -19,6 +19,9 @@ nav { height: 92px; display: flex; align-items: center; justify-content: space-b
 .brand-mark i:nth-child(2) { height: 17px; }
 .status { display: flex; align-items: center; gap: 9px; color: #a8aaa8; font-size: 13px; border: 1px solid #292b30; border-radius: 30px; padding: 9px 14px; background: #111216aa; }
 .status i { width: 7px; height: 7px; border-radius: 50%; background: #54e5a9; box-shadow: 0 0 12px #54e5a9; }
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.config-button { min-width: auto; padding: 9px 14px; border: 1px solid #373842; color: #d8d6e2; background: #16171d; border-radius: 30px; font: 600 12px "DM Sans"; }
+.config-button:hover { background: #24232d; box-shadow: none; }
 .hero { text-align: center; padding: 88px 0 76px; }
 .eyebrow { display: inline-flex; gap: 9px; align-items: center; color: #b7accd; font-size: 13px; text-transform: uppercase; letter-spacing: 1.6px; margin-bottom: 28px; }
 .eyebrow span { color: #9d86ff; }
@@ -56,12 +59,28 @@ button:disabled { cursor: wait; opacity: .65; transform: none; }
 .features h3 { font: 600 17px Manrope; margin: 14px 0 9px; }
 .features p { color: #777981; font-size: 13px; line-height: 1.55; margin: 0; }
 footer { border-top: 1px solid #202126; padding: 28px 0 36px; display: flex; justify-content: space-between; color: #5e6067; font-size: 12px; }
+dialog { width: min(560px, calc(100% - 28px)); color: #eeeef2; border: 1px solid #393844; border-radius: 22px; padding: 28px; background: #15161b; box-shadow: 0 30px 100px #000b; }
+dialog::backdrop { background: #050509bf; backdrop-filter: blur(5px); }
+.dialog-header { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+.dialog-kicker { color: #9b87fc; font-size: 11px; letter-spacing: 1.3px; text-transform: uppercase; font-weight: 600; }
+dialog h2 { margin: 7px 0 0; font: 700 25px Manrope; letter-spacing: -1px; }
+dialog p { color: #a0a0a9; font-size: 14px; line-height: 1.55; }
+.close-button { min-width: 34px; width: 34px; height: 34px; padding: 0; justify-content: center; border: 1px solid #393844; color: #d8d6e2; background: #22232a; font-size: 23px; line-height: 1; }
+.config-list { margin: 22px 0; border: 1px solid #2f3038; border-radius: 12px; overflow: hidden; }
+.config-list div { display: grid; grid-template-columns: minmax(165px, 1.25fr) 1.75fr; gap: 15px; padding: 12px 14px; border-top: 1px solid #292a31; }
+.config-list div:first-child { border-top: 0; }
+.config-list code { color: #b7a8ff; font: 600 11px "DM Sans"; overflow-wrap: anywhere; }
+.config-list span { color: #94959e; font-size: 12px; line-height: 1.35; }
+.render-link { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 14px; border-radius: 12px; background: #8370ec; color: white; text-decoration: none; font: 700 14px Manrope; transition: transform .2s, background .2s; }
+.render-link:hover { transform: translateY(-1px); background: #927fff; }
+.dialog-note { margin: 16px 0 0; font-size: 12px; text-align: center; }
 @keyframes wave { to { height: 9px; opacity: .55; } }
 @keyframes pulse { 50% { transform: scale(1.05); opacity: .25; } }
 @media (max-width: 760px) {
   nav, main, footer { width: min(100% - 28px, 1160px); }
   nav { height: 76px; }
   .status { font-size: 0; padding: 11px; }
+  .config-button { padding: 8px 12px; }
   .hero { padding: 62px 0 54px; }
   h1 { font-size: clamp(43px, 14vw, 66px); letter-spacing: -3.5px; }
   .lede { font-size: 16px; margin-bottom: 38px; }
@@ -71,4 +90,5 @@ footer { border-top: 1px solid #202126; padding: 28px 0 36px; display: flex; jus
   .features article, .features article + article { padding: 26px 8px; border-left: 0; border-top: 1px solid #202126; }
   .features article:first-child { border-top: 0; }
   footer { flex-direction: column; align-items: center; gap: 9px; }
+  .config-list div { grid-template-columns: 1fr; gap: 5px; }
 }

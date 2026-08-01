@@ -1,6 +1,16 @@
 const button = document.querySelector("#callButton");
 const message = document.querySelector("#message");
 const apiUrl = (import.meta.env.VITE_API_URL || "http://localhost:3000").replace(/\/$/, "");
+const configDialog = document.querySelector("#configDialog");
+const renderLink = document.querySelector("#renderLink");
+
+renderLink.href = import.meta.env.VITE_RENDER_ENVIRONMENT_URL || "https://dashboard.render.com/";
+
+document.querySelector("#configButton").addEventListener("click", () => configDialog.showModal());
+document.querySelector("#closeConfig").addEventListener("click", () => configDialog.close());
+configDialog.addEventListener("click", (event) => {
+  if (event.target === configDialog) configDialog.close();
+});
 
 button.addEventListener("click", async () => {
   button.disabled = true;

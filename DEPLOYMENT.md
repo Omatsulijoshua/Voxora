@@ -15,7 +15,8 @@
 1. Import the same GitHub repository into Vercel.
 2. Set **Root Directory** to `frontend`.
 3. Add `VITE_API_URL` with the Render URL (without a trailing slash).
-4. Deploy and copy the resulting Vercel URL.
+4. Add `VITE_RENDER_ENVIRONMENT_URL` with the Render Environment-page URL. It looks like `https://dashboard.render.com/web/srv-.../env` and powers the frontend Configure button.
+5. Deploy and copy the resulting Vercel URL.
 
 ## 3. Complete the connection
 

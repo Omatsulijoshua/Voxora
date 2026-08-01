@@ -18,7 +18,10 @@
         <span class="brand-mark"><i></i><i></i><i></i></span>
         Voxora
       </a>
-      <span class="status"><i></i> Voice agent online</span>
+      <div class="nav-actions">
+        <button id="configButton" class="config-button" type="button">Configure</button>
+        <span class="status"><i></i> Voice agent online</span>
+      </div>
     </nav>
 
     <main>
@@ -56,6 +59,24 @@
     </main>
 
     <footer><span>Powered by ElevenLabs × Twilio</span><span>Private. Secure. Effortless.</span></footer>
+    <dialog id="configDialog" aria-labelledby="configTitle">
+      <div class="dialog-header">
+        <div><span class="dialog-kicker">Backend setup</span><h2 id="configTitle">Configure your voice agent</h2></div>
+        <button id="closeConfig" class="close-button" type="button" aria-label="Close configuration">×</button>
+      </div>
+      <p>Add these private values to your Render service’s <strong>Environment</strong> tab. They stay on Render and are never exposed in this website.</p>
+      <div class="config-list">
+        <div><code>TWILIO_ACCOUNT_SID</code><span>Twilio Account SID (starts with AC)</span></div>
+        <div><code>TWILIO_AUTH_TOKEN</code><span>Twilio Auth Token</span></div>
+        <div><code>TWILIO_PHONE_NUMBER</code><span>Your Twilio phone number</span></div>
+        <div><code>MY_PHONE_NUMBER</code><span>The verified number to call</span></div>
+        <div><code>ELEVENLABS_AGENT_ID</code><span>ElevenLabs Conversational AI agent ID</span></div>
+        <div><code>ELEVENLABS_API_KEY</code><span>ElevenLabs API key</span></div>
+        <div><code>FRONTEND_URL</code><span>This Vercel site URL after deployment</span></div>
+      </div>
+      <a id="renderLink" class="render-link" href="https://dashboard.render.com/" target="_blank" rel="noreferrer">Open Render Environment <span>↗</span></a>
+      <p class="dialog-note">After saving variables in Render, redeploy the service, then return here to make a call.</p>
+    </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
