@@ -21,7 +21,19 @@ const twilioClient = twilio(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use((req: Request, res: Response, next) => {
-    const allowedOrigin = process.env.FRONTEND_URL || "*";
+    const configuredOrigins = (process.env.FRONTEND_URL || "")
+        .split(",")
+        .map((origin) => origin.trim())
+        .filter(Boolean);
+    const VoxoraOrigins = [
+        "https://voxora.vercel.app",
+        "https://frontend-six-hazel-93.vercel.app",
+    ];
+    const requestOrigin = req.headers.origin;
+    const allowedOrigin = requestOrigin &&
+        (configuredOrigins.includes(requestOrigin) || VoxoraOrigins.includes(requestOrigin))
+        ? requestOrigin
+        : configuredOrigins[0] || "*";
     res.header("Access-Control-Allow-Origin", allowedOrigin);
     res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
     res.header("Access-Control-Allow-Headers", "Content-Type");
