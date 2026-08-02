@@ -230,8 +230,13 @@ app.post("/api/make-call", async (req: Request, res: Response) => {
     try {
         await makeCall(phoneNumber);
         return res.json({ ok: true, message: "Your AI voice call is on the way." });
-    } catch {
-        return res.status(500).json({ ok: false, message: "The call could not be started." });
+    } catch (error) {
+        const twilioError = error as { code?: number; message?: string };
+        console.error("Twilio call failed:", error);
+        const reason = twilioError.code
+            ? `Twilio error ${twilioError.code}: ${twilioError.message}`
+            : "Twilio could not start the call. Check the Render service logs.";
+        return res.status(500).json({ ok: false, message: reason });
     }
 });
 
