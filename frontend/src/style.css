@@ -41,6 +41,11 @@ h1 em { font-style: normal; color: transparent; background: linear-gradient(95de
 .call-copy .label { color: #9b87fc; text-transform: uppercase; letter-spacing: 1.4px; font-size: 11px; font-weight: 600; }
 .call-copy h2 { font: 700 25px Manrope; letter-spacing: -.8px; margin: 8px 0; }
 .call-copy p { color: #92939b; margin: 0; line-height: 1.55; font-size: 14px; }
+.phone-field { display: block; margin-top: 16px; }
+.phone-field span { display: block; margin-bottom: 7px; color: #a9a9b1; font-size: 11px; font-weight: 600; letter-spacing: .7px; text-transform: uppercase; }
+.phone-field input { width: 100%; max-width: 310px; border: 1px solid #3b3c46; border-radius: 9px; padding: 11px 12px; color: #f2f1f5; background: #0b0c10; font: 500 14px "DM Sans"; outline: none; transition: border-color .2s, box-shadow .2s; }
+.phone-field input::placeholder { color: #656670; }
+.phone-field input:focus { border-color: #927fff; box-shadow: 0 0 0 3px #927fff22; }
 button { position: relative; z-index: 2; border: 0; border-radius: 14px; padding: 15px 20px; min-width: 205px; display: flex; align-items: center; gap: 13px; color: #111016; background: #f2f0ec; cursor: pointer; transition: transform .2s, box-shadow .2s; }
 button:hover { transform: translateY(-2px); box-shadow: 0 12px 35px #0008; }
 button:disabled { cursor: wait; opacity: .65; transform: none; }

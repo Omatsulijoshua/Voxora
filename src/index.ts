@@ -7,6 +7,9 @@ import { connectToElevenLabs } from './elevenlabs';
 
 const app = express();
 const server = createServer(app);
+const callAttempts = new Map<string, number[]>();
+const CALL_WINDOW_MS = 15 * 60 * 1000;
+const MAX_CALLS_PER_WINDOW = 3;
 
 // WebSocket server for Twilio media streams
 const wss = new WebSocketServer({ server, path: "/media-stream" });
@@ -189,7 +192,6 @@ app.post("/api/make-call", async (req: Request, res: Response) => {
         "TWILIO_ACCOUNT_SID",
         "TWILIO_AUTH_TOKEN",
         "TWILIO_PHONE_NUMBER",
-        "MY_PHONE_NUMBER",
         "ELEVENLABS_AGENT_ID",
         "ELEVENLABS_API_KEY",
         "RENDER_EXTERNAL_URL",
@@ -203,8 +205,30 @@ app.post("/api/make-call", async (req: Request, res: Response) => {
         });
     }
 
+    const phoneNumber = String(req.body?.phoneNumber || "").replace(/[\s().-]/g, "");
+    if (!/^\+[1-9]\d{7,14}$/.test(phoneNumber)) {
+        return res.status(400).json({
+            ok: false,
+            message: "Enter a valid number with its country code, for example +2348012345678.",
+        });
+    }
+
+    const now = Date.now();
+    const requester = req.ip || req.socket.remoteAddress || "unknown";
+    const recentAttempts = (callAttempts.get(requester) || []).filter(
+        (timestamp) => now - timestamp < CALL_WINDOW_MS,
+    );
+    if (recentAttempts.length >= MAX_CALLS_PER_WINDOW) {
+        return res.status(429).json({
+            ok: false,
+            message: "Call limit reached. Please try again in 15 minutes.",
+        });
+    }
+    recentAttempts.push(now);
+    callAttempts.set(requester, recentAttempts);
+
     try {
-        await makeCall(process.env.MY_PHONE_NUMBER!);
+        await makeCall(phoneNumber);
         return res.json({ ok: true, message: "Your AI voice call is on the way." });
     } catch {
         return res.status(500).json({ ok: false, message: "The call could not be started." });

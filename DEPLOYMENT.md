@@ -5,7 +5,7 @@
 1. Push this repository to GitHub.
 2. In Render, choose **New → Blueprint** and select the repository.
 3. Render reads `render.yaml` and asks for the secret environment values.
-4. Enter the Twilio and ElevenLabs values from `.env.example`.
+4. Enter the Twilio and ElevenLabs values from `.env.example`. The caller enters their destination number on the Voxora page.
 5. After deployment, copy the Render URL, such as
    `https://elevenlabs-twilio-voice-agent.onrender.com`.
 6. Add `RENDER_EXTERNAL_URL` in Render with that URL.

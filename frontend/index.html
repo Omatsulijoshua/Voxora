@@ -41,11 +41,15 @@
           <div class="call-copy">
             <span class="label">Ready when you are</span>
             <h2>Talk to your AI agent</h2>
-            <p>We’ll call your verified phone number. Pick up and start speaking.</p>
+            <p>Enter the number you want us to call, including its country code.</p>
+            <label class="phone-field" for="phoneNumber">
+              <span>Phone number</span>
+              <input id="phoneNumber" name="phoneNumber" type="tel" inputmode="tel" autocomplete="tel" placeholder="+234 801 234 5678" required />
+            </label>
           </div>
           <button id="callButton" type="button">
             <span class="phone">↗</span>
-            <span class="button-copy"><b>Call me now</b><small>Usually takes 5–10 seconds</small></span>
+            <span class="button-copy"><b>Call this number</b><small>Usually takes 5–10 seconds</small></span>
           </button>
         </div>
         <p id="message" class="message" role="status" aria-live="polite"></p>
@@ -69,13 +73,12 @@
         <div><code>TWILIO_ACCOUNT_SID</code><span>Twilio Account SID (starts with AC)</span></div>
         <div><code>TWILIO_AUTH_TOKEN</code><span>Twilio Auth Token</span></div>
         <div><code>TWILIO_PHONE_NUMBER</code><span>Your Twilio phone number</span></div>
-        <div><code>MY_PHONE_NUMBER</code><span>The verified number to call</span></div>
         <div><code>ELEVENLABS_AGENT_ID</code><span>ElevenLabs Conversational AI agent ID</span></div>
         <div><code>ELEVENLABS_API_KEY</code><span>ElevenLabs API key</span></div>
         <div><code>FRONTEND_URL</code><span>This Vercel site URL after deployment</span></div>
       </div>
       <a id="renderLink" class="render-link" href="https://dashboard.render.com/" target="_blank" rel="noreferrer">Open Render Environment <span>↗</span></a>
-      <p class="dialog-note">After saving variables in Render, redeploy the service, then return here to make a call.</p>
+      <p class="dialog-note">After saving variables in Render, redeploy the service, then return here and enter the number you want to call.</p>
     </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
